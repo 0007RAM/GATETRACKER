@@ -3,18 +3,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>GATE 2027 Study OS</title>
 <style>
-:root{--bg:linear-gradient(135deg,#eef3f1,#e8ecf8);--fg:#1a1d1c;--mut:#667;--gl:rgba(255,255,255,.65);--bd:rgba(0,0,0,.09);--ac:#0f8a6a;--rd:#d64545;--or:#e08a1e;--gr:#1f9d55;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:linear-gradient(135deg,#0d1514,#121428);--fg:#e8ecea;--mut:#8a94a0;--gl:rgba(255,255,255,.06);--bd:rgba(255,255,255,.1);--ac:#4fd1a5}}
-:root[data-theme="dark"]{--bg:linear-gradient(135deg,#0d1514,#121428);--fg:#e8ecea;--mut:#8a94a0;--gl:rgba(255,255,255,.06);--bd:rgba(255,255,255,.1);--ac:#4fd1a5}
+:root{--bg:linear-gradient(135deg,#eef3f1,#e8ecf8);--fg:#1a1d1c;--mut:#667;--gl:rgba(255,255,255,.65);--bd:rgba(0,0,0,.09);--ac:#0b7a5c;--rd:#c23434;--or:#a85f00;--gr:#167a41;--sb:#f2f6f5;--onac:#fff;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:linear-gradient(135deg,#0d1514,#121428);--fg:#e8ecea;--mut:#8a94a0;--gl:rgba(255,255,255,.06);--bd:rgba(255,255,255,.1);--ac:#4fd1a5;--sb:#10171b;--onac:#04241b;--rd:#ff7b7b;--or:#ffb45c;--gr:#4cd98a}}
+:root[data-theme="dark"]{--bg:linear-gradient(135deg,#0d1514,#121428);--fg:#e8ecea;--mut:#8a94a0;--gl:rgba(255,255,255,.06);--bd:rgba(255,255,255,.1);--ac:#4fd1a5;--sb:#10171b;--onac:#04241b;--rd:#ff7b7b;--or:#ffb45c;--gr:#4cd98a}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
-body{margin:0;background:var(--bg) fixed;background-color:#eef3f1;color:var(--fg);font:14px/1.5 system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}
+body{margin:0;background:var(--bg) fixed;background-color:var(--sb);color:var(--fg);font:14px/1.5 system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}
 #app{display:flex;min-height:100vh}
 aside{width:190px;flex:none;padding:14px 10px;position:sticky;top:0;height:100vh;box-sizing:border-box;display:flex;flex-direction:column;gap:3px;border-right:1px solid var(--bd)}
 aside h2{font-size:15px;margin:0 6px 10px}
 .nv{all:unset;cursor:pointer;padding:8px 10px;border-radius:10px;color:var(--mut);display:block;transition:.15s}
 .nv:hover{background:var(--gl)}.nv.on{background:var(--gl);color:var(--fg);box-shadow:inset 3px 0 var(--ac)}
 main{flex:1;min-width:0;padding:18px;max-width:1000px}
-.gl{background:var(--gl);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--bd);border-radius:16px;padding:14px;animation:in .3s both}
+.gl{background:var(--gl);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border:1px solid var(--bd);border-radius:16px;padding:14px;overflow-wrap:anywhere;min-width:0}
 @keyframes in{from{opacity:0;transform:translateY(6px)}}
 .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px;margin-bottom:12px}
 .g2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin-bottom:12px}
@@ -23,22 +23,38 @@ h3{margin:0 0 8px;font-size:14px}h1{font-size:22px;margin:0 0 12px}
 .m{color:var(--mut);font-size:12px}.bar{height:6px;background:var(--bd);border-radius:4px;overflow:hidden;margin:4px 0}.bar i{display:block;height:100%;background:var(--ac);transition:width .5s}
 .cd{cursor:pointer;transition:.15s}.cd:hover{transform:translateY(-2px)}
 input,select,textarea,.btn{font:inherit;color:var(--fg);background:var(--gl);border:1px solid var(--bd);border-radius:8px;padding:5px 9px}
-textarea{width:100%;box-sizing:border-box}input[type=number]{width:70px}.btn{cursor:pointer}.btn.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+textarea{width:100%;box-sizing:border-box}input[type=number]{width:70px}.btn{cursor:pointer}.btn.on{background:var(--ac);color:var(--onac);border-color:var(--ac)}
 .row{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:6px 0}
 .tag{border-radius:10px;padding:1px 8px;font-size:11px;border:1px solid var(--bd)}.r{color:var(--rd)}.o{color:var(--or)}.gn{color:var(--gr)}
 details{border-top:1px solid var(--bd);padding:8px 0}summary{cursor:pointer;font-weight:600}
 .hm{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}.hm div{aspect-ratio:1;border-radius:6px;background:var(--bd);font-size:10px;padding:2px;color:var(--mut)}
 #pal{position:fixed;inset:0;background:rgba(0,0,0,.4);display:flex;justify-content:center;padding-top:12vh;z-index:9}#pal[hidden]{display:none}
-.pb{width:min(520px,92vw);height:fit-content;background:var(--bg);background-color:#f4f6f5}.pb input{width:100%;box-sizing:border-box;margin-bottom:8px}
+.pb{width:min(520px,92vw);height:fit-content;background:var(--sb)}.pb input{width:100%;box-sizing:border-box;margin-bottom:8px}
 .pi{padding:7px 8px;border-radius:8px;cursor:pointer;display:flex;justify-content:space-between;gap:8px}.pi:hover{background:var(--gl)}.pi span{color:var(--mut);font-size:12px}
 pre{white-space:pre-wrap;font:inherit;margin:4px 0}
-.hero{background:linear-gradient(135deg,#0f5c4a,#2b2f6b);color:#fff;border-radius:22px;padding:28px;margin-bottom:14px;animation:fd 1.4s both}.hero .tag{border-color:rgba(255,255,255,.4)}.hero .m{color:#fff;opacity:.85}
+.hero{background:linear-gradient(135deg,#0f5c4a,#2b2f6b);color:#fff;border-radius:22px;padding:28px;margin-bottom:14px}.hero .tag{border-color:rgba(255,255,255,.4)}.hero .m{color:#fff;opacity:.85}
 .qt{font-size:clamp(20px,3.4vw,32px);line-height:1.3;font-weight:650;margin:14px 0;letter-spacing:-.01em}.chip{background:rgba(255,255,255,.15);border-radius:12px;padding:3px 10px;font-size:12px}.mir{margin-top:12px;font-style:italic;opacity:.9}
 @keyframes fd{from{opacity:0}}.fz aside{display:none}.fz main{margin:0 auto}
-@media(max-width:720px){#app{flex-direction:column}aside{width:auto;height:auto;flex-direction:row;overflow-x:auto;position:static;border:0;border-bottom:1px solid var(--bd)}aside h2{display:none}.nv{white-space:nowrap}main{padding:12px}}
+.ani .gl{animation:in .3s both}.ani .hero{animation:fd 1.4s both}
+.nv{display:flex;gap:8px;align-items:center}.nv.mo{display:none}.btn{display:inline-flex;align-items:center;gap:4px;user-select:none}
+input,select{max-width:100%}.row>*{min-width:0}svg{max-width:100%}
+:focus-visible{outline:2px solid var(--ac);outline-offset:2px;border-radius:6px}
+.skip{position:absolute;left:-999px}.skip:focus{left:8px;top:8px;z-index:20;background:var(--sb);padding:8px;border-radius:8px}
+#toast{position:fixed;left:50%;bottom:90px;transform:translate(-50%,20px);background:var(--fg);color:var(--sb);padding:10px 16px;border-radius:12px;opacity:0;pointer-events:none;transition:.25s;z-index:20;max-width:90vw}#toast.on{opacity:1;transform:translate(-50%,0)}
+@media(max-width:720px){#app{display:block}aside{position:fixed;left:0;right:0;bottom:0;top:auto;width:auto;height:auto;flex-direction:row;flex-wrap:wrap;justify-content:space-around;padding:6px 6px calc(6px + env(safe-area-inset-bottom,0px));background:var(--sb);border:0;border-top:1px solid var(--bd);z-index:6;box-shadow:0 -6px 20px rgba(0,0,0,.12)}
+aside h2,.nv.x{display:none}.nv.mo,aside.open .nv.x{display:flex}.nv{flex:1 1 20%;flex-direction:column;justify-content:center;gap:2px;font-size:20px;min-height:48px}.nv .lb{font-size:10px}main{padding:12px 12px 96px}}
+@media(max-width:480px){h1{font-size:19px}.hero{padding:18px;border-radius:16px}.grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr))}.g2{grid-template-columns:1fr}.st b{font-size:22px}}
+@media(max-width:340px){main{padding:8px 8px 96px}.gl{padding:10px}}
+@media(min-width:768px) and (max-width:1023px){aside{width:160px}}
+@media(min-width:1024px){main{max-width:1100px}}
+@media(min-width:1440px){main{max-width:1280px}aside{width:220px}body{font-size:15px}}
+@media(pointer:coarse){.btn,.nv,input,select{min-height:44px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+
 </style></head><body>
-<div id="app"><aside id="sb"></aside><main id="v"></main></div>
-<div id="pal" hidden><div class="gl pb"><input id="pq" placeholder="Search subjects, topics, notes, formulas, mistakes, vault…"><div id="pr"></div></div></div>
+<div id="app"><a class="skip" href="#v">Skip to content</a><aside id="sb" aria-label="Main navigation"></aside><main id="v" class="ani" tabindex="-1"></main></div>
+<div id="toast" role="status" aria-live="polite"></div>
+<div id="pal" hidden role="dialog" aria-modal="true" aria-label="Search"><div class="gl pb"><input id="pq" placeholder="Search subjects, topics, notes, formulas, mistakes, vault…"><div id="pr"></div></div></div>
 <script>
 const S=[
 ["Engineering Mathematics","Wk 1–3","Rosen (Discrete Maths); Gilbert Strang (Linear Algebra); Grewal/Thomas (Calculus); Sheldon Ross (Probability)",["Propositional & first-order logic","Sets, relations, functions","Partial orders & lattices","Monoids, groups","Graphs: connectivity, matching, colouring","Combinatorics: counting, recurrences, generating functions","Matrices, determinants, linear equations","Eigenvalues & eigenvectors","LU decomposition","Limits, continuity, differentiability","Maxima/minima, mean value theorem","Integration","Random variables & distributions (uniform, normal, exponential, Poisson, binomial)","Mean, median, mode, standard deviation","Conditional probability & Bayes theorem"]],
@@ -60,9 +76,23 @@ const add=(d,n)=>{const x=new Date(d);x.setDate(x.getDate()+n);return x.toISOStr
 const E=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const pct=(a,b)=>b?Math.round(a/b*100):0;
 let D={},nav={p:"home",s:null,t:null},OP={},PI=[],vq="";
-try{D=JSON.parse(localStorage.getItem("g27")||"{}")}catch(e){}
-const init=()=>{D.x=D.x||{};["tk","log","mk","ms","feed","vt"].forEach(k=>D[k]=D[k]||[]);D.act=D.act||{};D.qh=D.qh||{};D.qh.used=D.qh.used||[];D.qh.hist=D.qh.hist||[];D.rs=D.rs||{};D.start=D.start||td()};init();
-const save=()=>{try{localStorage.setItem("g27",JSON.stringify(D))}catch(e){}};
+const KEY="g27",BK="g27_bk",VER=2;
+function toast(m){const t=$("toast");t.textContent=m;t.classList.add("on");clearTimeout(t._t);t._t=setTimeout(()=>t.classList.remove("on"),5000)}
+function load(){let raw=null;try{raw=localStorage.getItem(KEY)}catch(e){}if(!raw)return{};
+try{const o=JSON.parse(raw);if(o&&typeof o=="object"&&!Array.isArray(o))return o;throw 0}catch(e){try{localStorage.setItem("g27_corrupt",raw)}catch(_){}
+try{const b=JSON.parse(localStorage.getItem(BK)||"{}"),k=Object.keys(b).sort().pop();if(k){setTimeout(()=>toast("Saved data was damaged. Restored the automatic backup from "+k+"."),0);return b[k]}}catch(_){}
+setTimeout(()=>toast("Saved data was unreadable and was set aside. Starting fresh."),0);return{}}}
+function fix(){if(!D||typeof D!="object"||Array.isArray(D))D={};["tk","log","mk","ms","feed","vt"].forEach(k=>{if(!Array.isArray(D[k]))D[k]=[]});["x","act","qh","rs"].forEach(k=>{if(!D[k]||typeof D[k]!="object"||Array.isArray(D[k]))D[k]={}})}
+function migrate(){Object.values(D.x).forEach(o=>{if(o&&typeof o=="object")["mt","mc","pa","pc"].forEach(f=>{if(o[f]!=null)o[f]=Math.max(0,Math.round(+o[f])||0)})});D.v=VER}
+function valid(o){if(!o||typeof o!="object"||Array.isArray(o))return false;for(const k of["tk","log","mk","ms","feed","vt"])if(o[k]!=null&&!Array.isArray(o[k]))return false;for(const k of["x","act","qh","rs"])if(o[k]!=null&&(typeof o[k]!="object"||Array.isArray(o[k])))return false;return true}
+const backupKeys=()=>{try{return Object.keys(JSON.parse(localStorage.getItem(BK)||"{}")).sort().reverse()}catch(e){return[]}};
+function autoBackup(){try{const b=JSON.parse(localStorage.getItem(BK)||"{}"),T=td();if(!b[T]){b[T]=D;Object.keys(b).sort().slice(0,-4).forEach(k=>delete b[k]);localStorage.setItem(BK,JSON.stringify(b))}}catch(e){}}
+D=load();
+const init=()=>{fix();D.x=D.x||{};["tk","log","mk","ms","feed","vt"].forEach(k=>D[k]=D[k]||[]);D.act=D.act||{};D.qh=D.qh||{};D.qh.used=D.qh.used||[];D.qh.hist=D.qh.hist||[];D.rs=D.rs||{};D.start=D.start||td();migrate()};init();autoBackup();
+let _st=0;const flush=()=>{clearTimeout(_st);_st=0;try{D.v=VER;localStorage.setItem(KEY,JSON.stringify(D))}catch(e){toast("Could not save (storage full or blocked). Download a backup now.")}};
+const save=()=>{clearTimeout(_st);_st=setTimeout(flush,250)};
+addEventListener("pagehide",flush);document.addEventListener("visibilitychange",()=>{if(document.hidden)flush()});
+addEventListener("error",e=>console.error(e.error));addEventListener("unhandledrejection",()=>toast("Something failed. Your data is safe."));
 const X=(i,j)=>D.x[i+"-"+j]||{},WX=(i,j)=>D.x[i+"-"+j]=D.x[i+"-"+j]||{};
 const log=m=>{D.feed.unshift(td()+" · "+m);D.feed=D.feed.slice(0,10)};
 const all=()=>S.flatMap((s,i)=>s[3].map((t,j)=>({i,j,t,s:s[0],x:X(i,j)})));
@@ -77,7 +107,7 @@ const streak=()=>{let n=0,d=td();if(!D.act[d])d=add(d,-1);while(D.act[d]){n++;d=
 const hrs=f=>(D.log.filter(l=>f(l[0])).reduce((a,l)=>a+l[1],0)/3600);
 /* ui bits */
 const bar=p=>`<div class="bar"><i style="width:${Math.min(100,p)}%"></i></div>`;
-const ring=(p,s=64)=>{const r=s/2-6,c=2*Math.PI*r;return`<svg width="${s}" height="${s}"><circle cx="${s/2}" cy="${s/2}" r="${r}" fill="none" stroke="var(--bd)" stroke-width="6"/><circle cx="${s/2}" cy="${s/2}" r="${r}" fill="none" stroke="var(--ac)" stroke-width="6" stroke-linecap="round" stroke-dasharray="${c*p/100} ${c}" transform="rotate(-90 ${s/2} ${s/2})"/><text x="50%" y="54%" text-anchor="middle" fill="var(--fg)" font-size="${s/4.5}" font-weight="700">${p}%</text></svg>`};
+const ring=(p,s=64)=>{const r=s/2-6,c=2*Math.PI*r;return`<svg role="img" aria-label="${p}% complete" width="${s}" height="${s}"><circle cx="${s/2}" cy="${s/2}" r="${r}" fill="none" stroke="var(--bd)" stroke-width="6"/><circle cx="${s/2}" cy="${s/2}" r="${r}" fill="none" stroke="var(--ac)" stroke-width="6" stroke-linecap="round" stroke-dasharray="${c*p/100} ${c}" transform="rotate(-90 ${s/2} ${s/2})"/><text x="50%" y="54%" text-anchor="middle" fill="var(--fg)" font-size="${s/4.5}" font-weight="700">${p}%</text></svg>`};
 const st=(l,v,s)=>`<div class="gl st"><span>${l}</span><b>${v}</b><i>${s||""}</i></div>`;
 const spark=a=>{if(a.length<2)return'<p class="m">Add 2+ mocks to see a trend.</p>';const mx=Math.max(...a),mn=Math.min(...a),r=mx-mn||1;return`<svg viewBox="0 0 300 80" style="width:100%"><polyline fill="none" stroke="var(--ac)" stroke-width="2.5" points="${a.map((v,i)=>(i*300/(a.length-1)).toFixed(0)+","+(75-(v-mn)/r*70).toFixed(0)).join(" ")}"/></svg>`};
 const cols=(a)=>{const mx=Math.max(...a.map(x=>x[1]),.1);return`<div class="row" style="align-items:end;height:100px;flex-wrap:nowrap">${a.map(([l,v])=>`<div style="flex:1;text-align:center;font-size:10px"><div style="background:var(--ac);height:${v/mx*70}px;border-radius:4px"></div>${v.toFixed(1)}<br>${l}</div>`).join("")}</div>`};
@@ -111,15 +141,26 @@ return`<div class="hero"><span class="tag">${QC[q.c]}</span><div class="qt">“$
 function why(){return`<h1>My Reason</h1><div class="gl"><p class="m">Write it once, read it often. Random lines from here appear on your Home banner. Saved in your backup too.</p><label class="m">GATE exam date</label><div class="row"><input type="date" data-r="_gd" value="${D.gd||""}"></div>${RK.map(([k,l])=>`<label class="m">${l}s (one per line)</label><textarea rows="3" data-r="${k}">${E(D.rs[k])}</textarea>`).join("")}</div><div class="gl" style="margin-top:12px"><h3>Quote history · ${D.qh.used.length}/${QL.length} used this cycle</h3>${D.qh.hist.slice(0,10).map(h=>{const q=QL.find(x=>x.id==h.id);return q?`<div class="m">${h.d} · ${QC[q.c]} · ${E(q.t)}</div>`:""}).join("")}</div>`}
 function focus(){const a=agg(),q=dayQ(),nx=all().find(o=>stat(o.i,o.j)!="Done"),tk=D.tk.filter(t=>!t.d);
 return`<div class="hero"><span class="tag">${QC[q.c]}</span><div class="qt">“${E(q.t)}”</div></div><div class="g2"><div class="gl"><h3>Current topic</h3>${nx?`<b>${E(nx.t)}</b><div class="m">${E(nx.s)} · ${stat(nx.i,nx.j)}</div>${bar(mast(nx.i,nx.j))}`:"All topics done 🎉"}<div class="row"><b id="tm" style="font-size:24px">${D.run?fmt(Date.now()-D.run):"00:00:00"}</b><span class="btn on" data-a="tm">${D.run?"Stop & save":"Start timer"}</span></div></div><div class="gl"><div class="row">${ring(a.p,80)}<div><b>Progress</b><div class="m">${streak()} day streak</div></div></div></div></div><div class="gl"><h3>Today's tasks</h3>${tk.map(t=>`<div class="row"><span class="btn" data-a="tg" data-p="${D.tk.indexOf(t)}">○</span>${E(t.t)}</div>`).join("")||'<p class="m">No open tasks.</p>'}</div><p><span class="btn" data-a="fz">Exit focus mode</span></p>`}
+/* infra */
+const gateDays=()=>D.gd?Math.ceil((new Date(D.gd)-new Date(td()))/864e5):null;
+const set=(id,h)=>{const e=$(id);if(e._h!==h){e._h=h;e.innerHTML=h}};
+const nvb=(n,i)=>`<button class="nv ${n[0]==nav.p?"on":""} ${i>3?"x":""}" data-a="gp" data-p="${n[0]}" ${n[0]==nav.p?'aria-current="page"':""}><span aria-hidden="true">${n[1]}</span><span class="lb">${n[2]}</span></button>`;
+const tl=(a,i,l)=>`<button class="nv x" data-a="${a}"><span aria-hidden="true">${i}</span><span class="lb">${l}</span></button>`;
+const sidebar=()=>'<h2>🎓 GATE 2027</h2>'+NAV.map(nvb).join("")+'<button class="nv mo" data-a="mo" aria-label="More menu"><span aria-hidden="true">☰</span><span class="lb">More</span></button>'+tl("op","🔍","Search")+tl("fz","🎯","Focus")+tl("th","🌓","Theme");
+function view(){try{return D.focus?focus():V[nav.p]()}catch(e){console.error(e);return'<div class="gl"><h3>Something went wrong</h3><p class="m">Your data is safe. Open Data & backup to export or restore.</p><span class="btn on" data-a="gp" data-p="data">Open Data & backup</span></div>'}}
+const AL={kt:"Topic",ky:"Mistake type",ty:"Mistake type",vy:"Item type",vtp:"Related topic",tp:"Priority",tdl:"Deadline",ss:"Subject",js:"Backup JSON",rbs:"Backup date"};
+function enhance(){document.querySelectorAll("#v [data-a],#sb [data-a],#pr [data-a]").forEach(e=>{if(e.tagName!="BUTTON"){e.tabIndex=0;e.setAttribute("role","button")}if(e.matches("[data-a=stat],[data-a=rv],[data-a=cf]"))e.setAttribute("aria-pressed",e.classList.contains("on"))});
+document.querySelectorAll("#v input,#v textarea,#v select,#pq").forEach(e=>{if(!(e.labels&&e.labels.length)&&!e.getAttribute("aria-label")){const p=e.previousElementSibling;e.setAttribute("aria-label",AL[e.id]||(e.dataset.r=="_gd"?"GATE exam date":"")||e.placeholder||(p&&p.tagName=="LABEL"?p.textContent:"")||"Input")}})}
+document.addEventListener("keydown",e=>{const t=e.target;if((e.key=="Enter"||e.key==" ")&&t.matches&&t.matches("[role=button]")){e.preventDefault();t.click()}});
 /* views */
 function home(){const a=agg(),T=td(),ev=evs(),od=ev.filter(e=>!e.done&&e.due<T),tdy=ev.filter(e=>!e.done&&e.due==T),tm=ev.filter(e=>!e.done&&e.due==add(T,1));
 const nxt=all().find(o=>stat(o.i,o.j)!="Done"),tk=D.tk.filter(t=>!t.d&&(!t.dl||t.dl<=T)).slice(0,3);
 const wk=S.map((s,i)=>({i,...ss(i)})).filter(o=>o.att>0).sort((a,b)=>pct(a.ok,a.att)-pct(b.ok,b.att)).slice(0,3);
-return`${banner()}<div class="grid">${st("Overall progress",a.p+"%","mastery across "+a.n+" topics")}${st("Study hours",hrs(()=>1).toFixed(1),"today "+hrs(d=>d==T).toFixed(1)+" h")}${st("MCQs solved",a.mt)}${st("PYQs solved",a.pa)}${st("Active streak",streak()+" d")}${st("Topics completed",a.dn,"studied + 3 revisions")}${st("Topics remaining",a.n-a.dn)}</div>
+return`${banner()}<div class="grid">${st("Overall progress",a.p+"%","mastery across "+a.n+" topics")}${st("Study hours",hrs(()=>1).toFixed(1),"today "+hrs(d=>d==T).toFixed(1)+" h")}${st("MCQs solved",a.mt)}${st("PYQs solved",a.pa)}${st("Active streak",streak()+" d")}${st("Days until GATE",gateDays()==null?"–":Math.max(0,gateDays()),gateDays()==null?"set date in My Reason":"")}${st("Topics completed",a.dn,"studied + 3 revisions")}${st("Topics remaining",a.n-a.dn)}</div>
 <div class="g2"><div class="gl"><h3>🎯 Today's focus</h3>${nxt?`<div>✓ Study: ${E(nxt.t)}</div>`:""}<div>✓ Solve 30 MCQs</div>${tdy.slice(0,2).map(e=>`<div>✓ Revise: ${E(e.t)}</div>`).join("")}${tk.map(t=>`<div>✓ ${E(t.t)}</div>`).join("")}</div>
 <div class="gl cd" data-a="gp" data-p="rev"><h3>🔁 Revision alerts</h3><div class="row"><span class="tag r">${od.length} overdue</span><span class="tag o">${tdy.length} today</span><span class="tag">${tm.length} tomorrow</span></div><p class="m">Open Revision Center</p></div>
 <div class="gl"><h3>⚠️ Weak subjects</h3>${wk.map(o=>`<div>${E(S[o.i][0])} <span class="tag r">${pct(o.ok,o.att)}% accuracy</span></div>`).join("")||'<p class="m">Log MCQs/PYQs to see weak subjects.</p>'}</div>
-<div class="gl"><h3>🕒 Recent activity</h3>${D.feed.slice(0,5).map(f=>`<div class="m">${E(f)}</div>`).join("")||'<p class="m">Nothing yet.</p>'}</div></div>`}
+<div class="gl"><h3>📈 Study hours · 7 days</h3>${cols([6,5,4,3,2,1,0].map(n=>{const d=add(T,-n);return[d.slice(8),hrs(x=>x==d)]}))}</div><div class="gl"><h3>Subject statistics</h3>${S.map((s,i)=>{const o=ss(i);return`<div class="m">${E(s[0].split(" (")[0])} · ${o.p}%</div>${bar(o.p)}`}).join("")}</div><div class="gl"><h3>🕒 Recent activity</h3>${D.feed.slice(0,5).map(f=>`<div class="m">${E(f)}</div>`).join("")||'<p class="m">Nothing yet.</p>'}</div></div>`}
 function subjects(){if(nav.t!=null)return topic(nav.s,nav.t);if(nav.s!=null)return subj(nav.s);
 return`<h1>Subjects</h1><div class="grid">${S.map((s,i)=>{const o=ss(i);return`<div class="gl cd" data-a="os" data-p="${i}"><div class="row">${ring(o.p,56)}<div><b>${E(s[0])}</b><div class="m">${s[1]} · ${s[3].length} topics</div></div></div><div class="m">Topics</div>${bar(o.p)}<div class="m">MCQ accuracy ${o.ma}% · PYQ accuracy ${o.pq}%</div></div>`}).join("")}</div>`}
 function subj(i){const o=ss(i);return`<span class="btn" data-a="gp" data-p="sub">← All subjects</span><h1 style="margin-top:10px">${E(S[i][0])}</h1><div class="row">${ring(o.p)}<div class="m">MCQ accuracy ${o.ma}% · PYQ accuracy ${o.pq}%<br>Books: ${E(S[i][2])}</div></div><div class="grid">${S[i][3].map((t,j)=>{const x=X(i,j);return`<div class="gl cd" data-a="ot" data-p="${i},${j}"><b>${E(t)}</b> ${weak(i,j)?'<span class="tag r">Weak</span>':""}${bar(mast(i,j))}<div class="m">${stat(i,j)} · MCQ ${x.mt||0}/50 · PYQ ${x.pa||0}/20 · Rev ${rvn(x)}/3 · ${x.cf||"Confidence not set"}</div></div>`}).join("")}</div>`}
@@ -152,10 +193,10 @@ return`<h1>Revision Center</h1><div class="gl" style="margin-bottom:12px"><h3>He
 function mis(){const ty={},tp={};D.mk.forEach(x=>{ty[x.type]=(ty[x.type]||0)+1;tp[x.topic]=(tp[x.topic]||0)+1});const top=Object.entries(tp).sort((a,b)=>b[1]-a[1]).slice(0,5);
 return`<h1>Mistake notebook</h1><div class="gl"><div class="row"><select id="kt">${all().map(o=>`<option value="${o.i}-${o.j}">${E(o.t.slice(0,45))}</option>`).join("")}</select><select id="ky"><option>Concept Gap</option><option>Calculation Error</option><option>Silly Mistake</option><option>Guess</option></select></div><div class="row"><input id="kq" placeholder="Question" style="flex:1 1 180px"><input id="ka" placeholder="Correct answer"><input id="kw" placeholder="Why it happened" style="flex:1 1 180px"><span class="btn on" data-a="ak" data-p="|k">Add</span></div></div>
 <div class="g2" style="margin-top:12px"><div class="gl"><h3>Most repeated mistake types</h3>${Object.entries(ty).sort((a,b)=>b[1]-a[1]).map(([a,b])=>`<div>${a} <b>${b}</b></div>`).join("")||'<p class="m">None yet.</p>'}</div><div class="gl"><h3>Frequently missed topics</h3>${top.map(([t,n])=>`<div>${E(topicName(t))} <b>${n}</b></div>`).join("")||'<p class="m">None yet.</p>'}</div></div><div class="gl" style="margin-top:12px">${D.mk.map((m,i)=>`<div class="row"><span style="flex:1"><b>${E(topicName(m.topic))}</b> <span class="tag">${E(m.type)}</span><br>${E(m.q)} → ${E(m.a)}<br><span class="m">${E(m.w)}</span></span><span class="btn" data-a="dk" data-p="${i}">✕</span></div>`).join("")}</div>`}
-const data=()=>`<h1>Data & backup</h1><div class="gl"><p class="m">Everything is stored locally in this browser. Export regularly.</p><textarea id="js" rows="8">${E(JSON.stringify(D))}</textarea><div class="row"><span class="btn on" data-a="dl">Download backup</span><span class="btn" data-a="cp">Copy JSON</span><span class="btn" data-a="im">Import from box</span></div></div>`;
+const data=()=>`<h1>Data & backup</h1><div class="gl"><p class="m">Everything is stored locally in this browser. Export regularly.</p><textarea id="js" rows="8">${E(JSON.stringify(D))}</textarea><div class="row"><span class="btn on" data-a="dl">Download backup</span><span class="btn" data-a="cp">Copy JSON</span><span class="btn" data-a="im">Import from box</span></div><div class="row"><label class="m" for="rbs">Automatic backups</label><select id="rbs">${backupKeys().map(k=>`<option>${k}</option>`).join("")}</select><span class="btn" data-a="rb">Restore</span></div></div>`;
 const V={home,sub:subjects,plan,vault,ana,rev,mis,why,data};
 /* AI (runtime sample capability) */
-async function ask(p){const s=window.claude&&await claude.use("sample");if(!s){alert("AI is only available when this page is opened in Claude.");return null}try{return(await s(p)).text}catch(e){alert("AI request failed: "+(e.code||""));return null}}
+async function ask(p){const s=window.claude&&await claude.use("sample");if(!s){toast("AI is only available when this page is opened in Claude.");return null}try{return(await s(p)).text}catch(e){toast("AI request failed: "+(e.code||""));return null}}
 const G="You help a GATE CSE 2027 aspirant. Use plain text with clear section headings, no markdown symbols, concise and exam-focused.\n\n";
 /* actions */
 const mkAdd=(t,pre)=>{const q=$(pre+"q").value.trim();if(q){D.mk.push({topic:t||$("kt").value,q,a:$(pre+"a").value,w:$(pre+"w").value,type:$(pre+"y").value});log("Mistake logged")}};
@@ -171,16 +212,16 @@ am:()=>{const n=$("mn").value.trim();if(n){D.ms.push({name:n,date:td(),marks:$("
 ak:p=>{const[t,pre]=p.split("|");mkAdd(t,pre)},dk:p=>D.mk.splice(+p,1),
 av:()=>{const t=$("vti").value.trim();if(t){D.vt.unshift({id:Date.now(),type:$("vy").value,title:t,channel:$("vch").value,dur:$("vdu").value,url:$("vurl").value,tp:$("vtp").value,text:$("vtx").value,date:td(),v:[]});log("Vault: "+t)}},dv:p=>{D.vt=D.vt.filter(v=>v.id!=p)},
 ais:async(p,b)=>{const[id,m]=p.split("|"),v=D.vt.find(x=>x.id==id);b.textContent="Working…";const o=await ask(G+(m=="sum"?"From this lecture material produce sections: AI Summary, Important Concepts, Formula Sheet, Key Takeaways, Frequently Asked Questions, Revision Notes.":"Turn these raw notes into sections: Clean Notes, Exam Notes, Short Revision Notes, Formula Notes, One-page Summary, Last-minute Revision Sheet.")+"\n\nTitle: "+v.title+"\n\n"+v.text.slice(0,12000));if(o){v.v.unshift({d:td(),mode:m,out:o});OP["v"+id]=true}},
-aits:async(k,b)=>{const x=D.x[k]||{};if(!x.nx){alert("Write some notes first.");return}b.textContent="Working…";const o=await ask(G+"Summarize these notes on '"+topicName(k)+"' into key points, formulas and likely exam traps:\n\n"+x.nx.slice(0,12000));if(o){x.ai=o;OP[k+"a"]=true}},
+aits:async(k,b)=>{const x=D.x[k]||{};if(!x.nx){toast("Write some notes first.");return}b.textContent="Working…";const o=await ask(G+"Summarize these notes on '"+topicName(k)+"' into key points, formulas and likely exam traps:\n\n"+x.nx.slice(0,12000));if(o){x.ai=o;OP[k+"a"]=true}},
 cp:()=>{try{navigator.clipboard.writeText(JSON.stringify(D))}catch(e){$("js").select()}},
-dl:async()=>{const d=window.claude&&await claude.use("downloads");if(d)try{await d.save({filename:"gate2027-backup.json",data:JSON.stringify(D)});return}catch(e){}$("js").select()},
-im:()=>{try{const o=JSON.parse($("js").value);if(o&&typeof o=="object"){D=o;init()}}catch(e){alert("Invalid JSON")}},
+dl:async()=>{const d=window.claude&&await claude.use("downloads");if(d)try{await d.save({filename:"gate2027-backup.json",data:JSON.stringify(D)});return}catch(e){toast("Download cancelled or failed. Copy the JSON below instead.")}$("js").select()},
+im:()=>{try{const o=JSON.parse($("js").value);if(!valid(o))throw new Error("shape");try{const b=JSON.parse(localStorage.getItem(BK)||"{}");b[td()+" pre-import"]=D;localStorage.setItem(BK,JSON.stringify(b))}catch(e){}D=o;init();flush();toast("Import complete. Your previous data was kept in automatic backups.")}catch(e){toast("Import failed: not a valid backup. Nothing was changed.")}},
 pk:p=>{$("pal").hidden=true;PI[+p].f()}};
-const go=(p,s=null,t=null)=>{nav={p,s,t};render();scrollTo(0,0)};
-function render(){$("sb").innerHTML='<h2>🎓 GATE 2027</h2>'+NAV.map(n=>`<button class="nv ${n[0]==nav.p?"on":""}" data-a="gp" data-p="${n[0]}">${n[1]} ${n[2]}</button>`).join("")+'<button class="nv" data-a="op">🔍 Search <span class="m">⌘K</span></button><button class="nv" data-a="fz">🎯 Focus <span class="m">F</span></button><button class="nv" data-a="th">🌓 Theme</button>';document.body.classList.toggle("fz",!!D.focus);$("v").innerHTML=D.focus?focus():V[nav.p]();const s=$("vs");if(s)s.oninput=()=>{vq=s.value;const p=s.selectionStart;render();$("vs").focus();$("vs").setSelectionRange(p,p)}}
-A.fz=()=>{D.focus=!D.focus};A.op=()=>openPal();A.th=()=>{const r=document.documentElement;r.dataset.theme=r.dataset.theme=="dark"?"light":"dark"};
+const go=(p,s=null,t=null)=>{nav={p,s,t};$("sb").classList.remove("open");const v=$("v");v.classList.add("ani");setTimeout(()=>v.classList.remove("ani"),450);render();scrollTo(0,0)};
+function render(){set("sb",sidebar());document.body.classList.toggle("fz",!!D.focus);set("v",view());const s=$("vs");if(s)s.oninput=()=>{vq=s.value;const p=s.selectionStart;render();$("vs").focus();$("vs").setSelectionRange(p,p)};enhance()}
+A.fz=()=>{D.focus=!D.focus};A.mo=()=>$("sb").classList.toggle("open");A.rb=()=>{try{const o=JSON.parse(localStorage.getItem(BK)||"{}")[$("rbs").value];if(!valid(o))throw 0;D=JSON.parse(JSON.stringify(o));init();flush();toast("Backup restored.")}catch(e){toast("Could not restore that backup.")}};A.op=()=>openPal();A.th=()=>{const r=document.documentElement;r.dataset.theme=r.dataset.theme=="dark"?"light":"dark"};
 document.addEventListener("click",async e=>{const b=e.target.closest("[data-a]");if(!b)return;const f=A[b.dataset.a];if(!f)return;const r=f(b.dataset.p,b);if(r&&r.then)await r;D.act[td()]=1;save();if(b.dataset.a!="cp"&&b.dataset.a!="th")render()});
-document.addEventListener("change",e=>{const t=e.target;if(t.dataset.r){if(t.dataset.r=="_gd")D.gd=t.value;else D.rs[t.dataset.r]=t.value;RL=pickRL();save();return}if(!t.dataset.f)return;const[k,f]=t.dataset.f.split("."),o=D.x[k]=D.x[k]||{};o[f]=t.type=="number"?Math.max(0,+t.value):t.value;D.act[td()]=1;save();render()});
+document.addEventListener("change",e=>{const t=e.target;if(t.dataset.r){if(t.dataset.r=="_gd")D.gd=t.value;else D.rs[t.dataset.r]=t.value;RL=pickRL();save();return}if(!t.dataset.f)return;const[k,f]=t.dataset.f.split("."),o=D.x[k]=D.x[k]||{};o[f]=t.type=="number"?Math.min(1e5,Math.max(0,Math.round(+t.value)||0)):t.value;if((o.mc||0)>(o.mt||0))o.mt=o.mc;if((o.pc||0)>(o.pa||0))o.pa=o.pc;D.act[td()]=1;save();render()});
 document.addEventListener("toggle",e=>{if(e.target.dataset&&e.target.dataset.o)OP[e.target.dataset.o]=e.target.open},true);
 function pal(q){q=q.toLowerCase();const h=s=>String(s||"").toLowerCase().includes(q),r=[];
 NAV.forEach(n=>h(n[2])&&r.push({l:n[1]+" "+n[2],s:"Page",f:()=>go(n[0])}));
@@ -189,13 +230,13 @@ all().forEach(o=>(h(o.t)||h(o.x.nx)||h(o.x.fm)||h(o.x.bk))&&r.push({l:o.t,s:o.s,
 D.vt.forEach(v=>(h(v.title)||h(v.text))&&r.push({l:v.title,s:"Vault · "+v.type,f:()=>{vq=q;go("vault")}}));
 D.mk.forEach(m=>(h(m.q)||h(m.w)||h(m.a))&&r.push({l:m.q,s:"Mistake",f:()=>go("mis")}));
 PI=r.slice(0,12);$("pr").innerHTML=PI.map((x,i)=>`<div class="pi" data-a="pk" data-p="${i}"><b>${E(x.l)}</b><span>${E(x.s)}</span></div>`).join("")||'<p class="m">No results</p>'}
-function openPal(){$("pal").hidden=false;$("pq").value="";pal("");$("pq").focus()}
-$("pq").oninput=()=>pal($("pq").value);$("pal").onclick=e=>{if(e.target.id=="pal")$("pal").hidden=true};
+function openPal(){$("pal").hidden=false;$("pq").value="";pal("");enhance();$("pq").focus()}
+$("pq").oninput=()=>{pal($("pq").value);enhance()};$("pal").onclick=e=>{if(e.target.id=="pal")$("pal").hidden=true};
 addEventListener("keydown",e=>{const inp=/INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName),po=!$("pal").hidden;
 if((e.ctrlKey||e.metaKey)&&e.key=="k"||(!inp&&e.key=="/")){e.preventDefault();openPal()}
 else if(e.key=="Escape")$("pal").hidden=true;
 else if(e.key=="Enter"&&po&&PI[0]){$("pal").hidden=true;PI[0].f()}
 else if(!inp&&!po&&e.key=="f"){A.fz();save();render()}else if(!inp&&!po&&/^[1-9]$/.test(e.key)){D.focus=false;go(NAV[e.key-1][0])}});
 setInterval(()=>{const e=$("tm");if(e&&D.run)e.textContent=fmt(Date.now()-D.run)},1000);
-render();
+render();setTimeout(()=>$("v").classList.remove("ani"),1500);
 </script></body></html>
